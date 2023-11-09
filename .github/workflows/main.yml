@@ -25,7 +25,7 @@ jobs:
       - run: python3 main.py --parse-sources
       - run: ./scripts/md2epub.sh
       - run: ./scripts/epub2azw.sh
-#      - run: ./scripts/md2pdf.sh
+      - run: ./scripts/md2pdf.sh
       - name: Upload ePub
         uses: actions/upload-artifact@v3
         with:
@@ -35,6 +35,13 @@ jobs:
       - name: Upload AZW
         uses: actions/upload-artifact@v3
         with:
-          name: liturgical-calendar.azw
-          path: ./output_data/azw/liturgical-calendar.azw
+          name: liturgical-calendar.azw3
+          path: ./output_data/azw/liturgical-calendar.azw3
           retention-days: 1
+      - name: Upload PDF
+        uses: actions/upload-artifact@v3
+        with:
+          name: liturgical-calendar.pdf
+          path: ./output_data/pdf/liturgical-calendar.pdf
+          retention-days: 1
+          
