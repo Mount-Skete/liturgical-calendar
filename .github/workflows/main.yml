@@ -10,7 +10,10 @@ jobs:
 
     steps:
       - name: Install dependencies
-        run: sudo apt-get install -y pandoc texlive-xetex
+        run: sudo apt-get install -y pandoc texlive-xetex language-pack-ru
+      - run: sudo dpkg-reconfigure locales
+      - name: Install Calibre
+        run: sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
@@ -21,11 +24,17 @@ jobs:
       - run: ./scripts/source_books_convert.sh
       - run: python3 main.py --parse-sources
       - run: ./scripts/md2epub.sh
-#      - run: ./scripts/epub2azw.sh
+      - run: ./scripts/epub2azw.sh
 #      - run: ./scripts/md2pdf.sh
       - name: Upload ePub
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ inputs.artifact-name }}
+          name: liturgical-calendar.epub
           path: ./output_data/epub/liturgical-calendar.epub
+          retention-days: 1
+      - name: Upload AZW
+        uses: actions/upload-artifact@v3
+        with:
+          name: liturgical-calendar.azw
+          path: ./output_data/azw/liturgical-calendar.azw
           retention-days: 1

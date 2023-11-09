@@ -9,8 +9,13 @@ pip install -r requirements.txt
 ```
 Установка Pandoc и Xelatex для Ubuntu, необходимых для конвертации форматов.
 ```shell
-sudo apt-get install pandoc texlive-xetex
+sudo apt-get install pandoc texlive-xetex language-pack-ru
 ```
+Установка [Calibre](https://calibre-ebook.com/download_linux)
+```shell
+sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
+```
+
 Загрузка источников и их конвертация в HTML.
 ```shell
 ./scripts/source_books_download.sh
