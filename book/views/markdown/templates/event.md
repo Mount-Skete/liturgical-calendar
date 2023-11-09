@@ -1,0 +1,6 @@
+## {{header}} {#{{id}}}
+
+{{#content}}
+{{.}}
+
+{{/content}}
