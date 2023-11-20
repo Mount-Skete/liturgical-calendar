@@ -2,15 +2,14 @@ import chevron
 from datetime import datetime
 from dataclasses import dataclass
 from .TemplateBase import TemplateBase
-from book.data import Hymn, HymnSet, Event
+from book.data import Feast, Hymn, HymnSet
 
 
 @dataclass
 class DayData:
     gregorian_date: datetime
     julian_date: datetime
-    hymns: list[HymnSet]
-    events: list[Event]
+    feasts: list[Feast]
     echo: int
 
     @property
@@ -25,9 +24,17 @@ class DayData:
     def date_link(self) -> str:
         return TemplateBase.get_date_link(self.gregorian_date)
 
+    # @property
+    # def special_event(self):
+    #     return next(filter(lambda x: x.is_special, self.events), None)
+
     @property
-    def special_event(self) -> Event:
-        return next(filter(lambda x: x.is_special, self.events), None)
+    def hymns(self) -> list[HymnSet]:
+        hymns = []
+        for feast in self.feasts:
+            hymns.append(feast.hymns)
+
+        return hymns
 
 
 class Day(TemplateBase):

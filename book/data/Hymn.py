@@ -15,25 +15,25 @@ class Hymn:
     title: str
     content: str
     echo: Optional[int] = 0
-    week_day: Optional[int] = 0
+    # week_day: Optional[int] = 0
 
     header: Optional[str] = ''
     type: Optional[HymnType] = HymnType.Troparion
 
-    @staticmethod
-    def from_xml(item: Element):
-        # TODO: verify tag name
-
-        type = item.attrib.get('type')
-        h_type = HymnType.Troparion
-        if type and type == 'kontakion':
-            h_type = HymnType.Kontakion
-
-        return Hymn(title=StringUtils.clean(item.find('title').text),
-                    content=StringUtils.clean(item.find('content').text),
-                    echo=int(item.attrib['echo']),
-                    week_day=int(item.attrib['week_day']) if item.get('week_day') else 0,
-                    type=h_type)
+    # @staticmethod
+    # def from_xml(item: Element):
+    #     # TODO: verify tag name
+    #
+    #     type = item.attrib.get('type')
+    #     h_type = HymnType.Troparion
+    #     if type and type == 'kontakion':
+    #         h_type = HymnType.Kontakion
+    #
+    #     return Hymn(title=StringUtils.clean(item.find('title').text),
+    #                 content=StringUtils.clean(item.find('content').text),
+    #                 echo=int(item.attrib['echo']),
+    #                 week_day=int(item.attrib['week_day']) if item.get('week_day') else 0,
+    #                 type=h_type)
 
 
 @dataclass

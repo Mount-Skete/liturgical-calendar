@@ -1,2 +1,3 @@
 from .Hymn import Hymn, HymnSet, HymnType
-from .Event import Event
+from .Feast import Feast, FeastType, FeastRank
+from .FeastsRepository import FeastsRepository

@@ -15,14 +15,14 @@ jobs:
       - name: Install Calibre
         run: sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
       - uses: actions/checkout@v4
+        with:
+          submodules: true
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
           cache: 'pip'
       - run: pip install -r requirements.txt
-      - run: ./scripts/source_books_download.sh
-      - run: ./scripts/source_books_convert.sh
-      - run: python3 main.py --parse-sources
+      - run: python3 main.py
       - run: ./scripts/md2epub.sh
       - run: ./scripts/epub2azw.sh
       - run: ./scripts/md2pdf.sh
@@ -31,16 +31,16 @@ jobs:
         with:
           name: liturgical-calendar.epub
           path: ./output_data/epub/liturgical-calendar.epub
-          retention-days: 1
+          retention-days: 7
       - name: Upload AZW
         uses: actions/upload-artifact@v3
         with:
           name: liturgical-calendar.azw3
           path: ./output_data/azw/liturgical-calendar.azw3
-          retention-days: 1
+          retention-days: 7
       - name: Upload PDF
         uses: actions/upload-artifact@v3
         with:
           name: liturgical-calendar.pdf
           path: ./output_data/pdf/liturgical-calendar.pdf
-          retention-days: 1
+          retention-days: 7
