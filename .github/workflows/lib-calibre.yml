@@ -1,4 +1,4 @@
-name: ePub to AZW
+name: Calibre
 
 on:
   workflow_call:
@@ -12,6 +12,7 @@ on:
 
 jobs:
   epub_to_azw3:
+    name: ePub to AZW
     runs-on: ubuntu-latest
 
     steps:
