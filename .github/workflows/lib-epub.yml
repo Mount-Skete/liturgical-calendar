@@ -5,9 +5,8 @@ on:
         required: true
         type: string
       artifact-input-path:
-        required: false
+        required: true
         type: string
-        default: ''
       artifact-output-filename:
         required: true
         type: string
