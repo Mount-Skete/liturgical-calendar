@@ -46,7 +46,6 @@ jobs:
     needs: [ create_book ]
     with:
       artifact-input-filename: markdown.zip
-      artifact-input-path: ''
       artifact-output-filename: liturgical-calendar.epub
       artifact-output-path: ./output_data/epub/liturgical-calendar.epub
 
