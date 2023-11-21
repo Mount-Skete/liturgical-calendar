@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Install dependencies
-        run: sudo apt-get install -y texlive-xetex language-pack-ru fonts-ubuntu
+        run: sudo apt-get install -y language-pack-ru
       - run: sudo dpkg-reconfigure locales
       - uses: actions/checkout@v4
         with:
@@ -29,16 +29,18 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: markdown.zip
+          path: '.'
           retention-days: 7
 
-      - run: ./scripts/md2pdf.sh
-
-      - name: Upload PDF
-        uses: actions/upload-artifact@v3
-        with:
-          name: liturgical-calendar.pdf
-          path: ./output_data/pdf/liturgical-calendar.pdf
-          retention-days: 7
+  convert_md_to_pdf:
+    name: Markdown to PDF
+    uses: ./.github/workflows/lib-pdf.yml
+    needs: [ create_book ]
+    with:
+      artifact-input-filename: markdown.zip
+      artifact-input-path: '.'
+      artifact-output-filename: liturgical-calendar.pdf
+      artifact-output-path: ./output_data/pdf/liturgical-calendar.pdf
 
   convert_md_to_epub:
     name: Markdown to ePub
