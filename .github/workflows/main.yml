@@ -12,8 +12,6 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install -y pandoc texlive-xetex language-pack-ru libegl1 libopengl0 libxcb-cursor0 fonts-ubuntu
       - run: sudo dpkg-reconfigure locales
-      - name: Install Calibre
-        run: sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
       - uses: actions/checkout@v4
         with:
           submodules: true
@@ -24,7 +22,6 @@ jobs:
       - run: pip install -r requirements.txt
       - run: python3 main.py
       - run: ./scripts/md2epub.sh
-      - run: ./scripts/epub2azw.sh
       - run: ./scripts/md2pdf.sh
       - name: Upload ePub
         uses: actions/upload-artifact@v3
@@ -32,15 +29,17 @@ jobs:
           name: liturgical-calendar.epub
           path: ./output_data/epub/liturgical-calendar.epub
           retention-days: 7
-      - name: Upload AZW
-        uses: actions/upload-artifact@v3
-        with:
-          name: liturgical-calendar.azw3
-          path: ./output_data/azw/liturgical-calendar.azw3
-          retention-days: 7
       - name: Upload PDF
         uses: actions/upload-artifact@v3
         with:
           name: liturgical-calendar.pdf
           path: ./output_data/pdf/liturgical-calendar.pdf
           retention-days: 7
+
+  convert_epub_to_azw:
+    name: ePub to AZW
+    uses: ./.github/workflows/lib-calibre.yml
+    needs: [create_book]
+#    with:
+#      artifact-input: build
+#      artifact-output: build
