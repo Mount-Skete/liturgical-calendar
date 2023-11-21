@@ -39,6 +39,6 @@ jobs:
       - name: Upload AZW
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ artifact-output-filename }}
-          path: ${{ artifact-output-path }}
+          name: ${{ inputs.artifact-output-filename }}
+          path: ${{ inputs.artifact-output-path }}
           retention-days: 7
