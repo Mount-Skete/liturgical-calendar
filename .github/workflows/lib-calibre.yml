@@ -9,6 +9,12 @@ on:
       artifact-input-path:
         required: true
         type: string
+      artifact-output-filename:
+        required: true
+        type: string
+      artifact-output-path:
+        required: true
+        type: string
 
 jobs:
   epub_to_azw3:
@@ -33,6 +39,6 @@ jobs:
       - name: Upload AZW
         uses: actions/upload-artifact@v3
         with:
-          name: liturgical-calendar.azw3
-          path: ./output_data/azw/liturgical-calendar.azw3
+          name: ${{ artifact-output-filename }}
+          path: ${{ artifact-output-path }}
           retention-days: 7

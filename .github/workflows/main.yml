@@ -43,3 +43,5 @@ jobs:
     with:
       artifact-input-filename: liturgical-calendar.epub
       artifact-input-path: ./output_data/epub/
+      artifact-output-filename: liturgical-calendar.azw3
+      artifact-output-path: ./output_data/azw/liturgical-calendar.azw3
