@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Install dependencies
-        run: sudo apt-get install -y pandoc texlive-xetex language-pack-ru libegl1 libopengl0 libxcb-cursor0 fonts-ubuntu
+        run: sudo apt-get install -y pandoc texlive-xetex language-pack-ru libopengl0 libxcb-cursor0 fonts-ubuntu
       - run: sudo dpkg-reconfigure locales
       - uses: actions/checkout@v4
         with:
@@ -39,7 +39,7 @@ jobs:
   convert_epub_to_azw:
     name: ePub to AZW
     uses: ./.github/workflows/lib-calibre.yml
-    needs: [create_book]
-#    with:
-#      artifact-input: build
-#      artifact-output: build
+    needs: [ create_book ]
+    with:
+      artifact-input-filename: liturgical-calendar.epub
+      artifact-input-path: ./output_data/epub/liturgical-calendar.epub

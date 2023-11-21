@@ -2,10 +2,13 @@ name: ePub to AZW
 
 on:
   workflow_call:
-#    inputs:
-#      artifact-name:
-#        required: true
-#        type: string
+    inputs:
+      artifact-input-filename:
+        required: true
+        type: string
+      artifact-input-path:
+        required: true
+        type: string
 
 jobs:
   epub_to_azw3:
@@ -13,7 +16,7 @@ jobs:
 
     steps:
       - name: Install dependencies
-        run: sudo apt-get install -y fonts-ubuntu
+        run: sudo apt-get install -y libegl1
       - name: Install Calibre
         run: sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
       - uses: actions/checkout@v4
@@ -22,8 +25,8 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: liturgical-calendar.epub
-          path: ./output_data/epub/liturgical-calendar.epub
+          name: ${{ inputs.artifact-input-filename }}
+          path: ${{ inputs.artifact-input-path }}
       - name: Convert ePub to AZW3
         run: ./scripts/epub2azw.sh
       - name: Upload AZW
