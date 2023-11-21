@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Install dependencies
-        run: sudo apt-get install -y libegl1
+        run: sudo apt-get install -y libegl1 libopengl0
       - name: Install Calibre
         run: sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
       - uses: actions/checkout@v4
