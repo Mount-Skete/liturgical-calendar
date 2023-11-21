@@ -15,26 +15,31 @@ on:
         type: string
 
 jobs:
-  epub_to_azw3:
-    name: ePub to AZW
+  md_to_epub:
+    name: Markdown to ePub
     runs-on: ubuntu-latest
 
     steps:
       - name: Install dependencies
-        run: sudo apt-get install -y libegl1 libopengl0 libxcb-cursor0
-      - name: Install Calibre
-        run: sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
+        run: sudo apt-get install -y pandoc
+
       - uses: actions/checkout@v4
         with:
           submodules: true
+
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
           name: ${{ inputs.artifact-input-filename }}
           path: ${{ inputs.artifact-input-path }}
-      - name: Convert ePub to AZW3
-        run: ./scripts/epub2azw.sh
-      - name: Upload AZW
+
+      - name: Extract Markdown
+        run: unzip markdown.zip
+
+      - name: Convert Markdown to ePub
+        run: ./scripts/md2epub.sh
+
+      - name: Upload ePub
         uses: actions/upload-artifact@v3
         with:
           name: ${{ inputs.artifact-output-filename }}
