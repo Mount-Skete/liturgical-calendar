@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Install dependencies
-        run: sudo apt-get install -y pandoc texlive-xetex language-pack-ru libxcb-cursor0 fonts-ubuntu
+        run: sudo apt-get install -y pandoc texlive-xetex language-pack-ru fonts-ubuntu
       - run: sudo dpkg-reconfigure locales
       - uses: actions/checkout@v4
         with:
