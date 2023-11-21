@@ -41,7 +41,6 @@ class FeastRank(Enum):
 class Feast:
     title: str
 
-    date_source: str
     julian: datetime
     gregorian: datetime
 

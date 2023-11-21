@@ -1,10 +1,10 @@
 import os
 import xml.etree.ElementTree as ET
-from datetime import datetime
+from datetime import datetime, timedelta
 from calendar import monthrange
 
 from julian_calendar import (julian_to_gregorian,
-                             calculate_orthodox_easter_gregorian)
+                             calculate_orthodox_easter_julian)
 
 from .Feast import Feast, FeastType, FeastRank
 from .Hymn import HymnSet, Hymn, HymnType
@@ -31,7 +31,20 @@ class FeastsRepository:
         for idx in range(1, 13):
             result += self.__read_xml(f'feasts_{idx:02}.xml')
 
+        result += self.__read_xml('feasts_movable.xml')
+
         return result
+
+    def __parse_date_xml(self, xml) -> datetime:
+        if xml.find('date/julian') is not None:
+            date = xml.find('date/julian').text
+            return FeastsRepository.__parse_date(self.__year, date)
+        elif xml.find('date/easter') is not None:
+            easter = calculate_orthodox_easter_julian(self.__year)
+            days = int(xml.find('date/easter').get('days', 0))
+            return easter + timedelta(days=days)
+        else:
+            raise NotImplementedError('Date format not supported')
 
     @staticmethod
     def __parse_date(year, date):
@@ -72,9 +85,7 @@ class FeastsRepository:
         feasts_xml = root.findall('feast')
         for xml in feasts_xml:
             title = xml.find('title/ru').text
-            date = xml.find('date/julian').text
-            date_source = f'julian-{date}'
-            julian = FeastsRepository.__parse_date(self.__year, date)
+            julian = self.__parse_date_xml(xml)
 
             if not julian:
                 # Skipping non-leap year
@@ -90,7 +101,6 @@ class FeastsRepository:
 
             feast = Feast(
                 title=title,
-                date_source=date_source,
                 julian=julian,
                 gregorian=gregorian,
                 type=feast_type,
