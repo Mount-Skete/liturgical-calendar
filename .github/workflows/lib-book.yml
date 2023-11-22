@@ -1,0 +1,72 @@
+on:
+  workflow_call:
+    inputs:
+      year:
+        required: true
+        type: number
+
+jobs:
+  create_books_year:
+    name: Create books for ${{ inputs.year }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install dependencies
+        run: sudo apt-get install -y language-pack-ru
+      - run: sudo dpkg-reconfigure locales
+
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - run: python3 book/src/main.py -y ${{ inputs.year }}
+
+      - name: Compress Markdown
+        run: zip markdown-${{ inputs.year }}.zip ./output_data/markdown/*
+
+      - name: Upload Markdown
+        uses: actions/upload-artifact@v3
+        with:
+          name: markdown-${{ inputs.year }}.zip
+          path: markdown-${{ inputs.year }}.zip
+          retention-days: 7
+
+  convert_md_to_pdf:
+    name: Markdown to PDF
+    uses: ./.github/workflows/lib-pdf.yml
+    needs: [ create_book ]
+    with:
+      artifact-input-filename: markdown-${{ inputs.year }}.zip
+      artifact-input-path: '.'
+      artifact-output-filename: liturgical-calendar-${{ inputs.year }}.pdf
+      artifact-output-path: ./output_data/pdf/liturgical-calendar-${{ inputs.year }}.pdf
+
+  convert_md_to_epub:
+    name: Markdown to ePub
+    uses: ./.github/workflows/lib-epub.yml
+    needs: [ create_book ]
+    with:
+      artifact-input-filename: markdown-${{ inputs.year }}.zip
+      artifact-input-path: '.'
+      artifact-output-filename: liturgical-calendar-${{ inputs.year }}.epub
+      artifact-output-path: ./output_data/epub/liturgical-calendar-${{ inputs.year }}.epub
+
+  convert_epub_to_azw:
+    name: ePub to AZW
+    uses: ./.github/workflows/lib-calibre.yml
+    needs: [ convert_md_to_epub ]
+    with:
+      artifact-input-filename: liturgical-calendar-${{ inputs.year }}.epub
+      artifact-input-path: ./output_data/epub/
+      artifact-output-filename: liturgical-calendar-${{ inputs.year }}.azw3
+      artifact-output-path: ./output_data/azw/liturgical-calendar-${{ inputs.year }}.azw3
