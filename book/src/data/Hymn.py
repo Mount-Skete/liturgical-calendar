@@ -34,14 +34,14 @@ class Hymn:
     #                 type=h_type)
 
 
-@dataclass
-class HymnSet:
-    hymns: list[Hymn]
-    title: str
-
-    # @property
-    # def title(self) -> str:
-    #     if len(self.hymns) > 0:
-    #         return self.hymns[0].title
-    #
-    #     return ''
+# @dataclass
+# class HymnSet:
+#     hymns: list[Hymn]
+#     title: str
+#
+#     # @property
+#     # def title(self) -> str:
+#     #     if len(self.hymns) > 0:
+#     #         return self.hymns[0].title
+#     #
+#     #     return ''

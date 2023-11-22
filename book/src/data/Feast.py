@@ -2,7 +2,8 @@ from enum import Enum
 from datetime import datetime, timedelta
 from dataclasses import dataclass
 
-from .Hymn import HymnSet, Hymn
+from .Hymn import Hymn
+from .Hymns import Hymns
 
 
 class FeastType(Enum):
@@ -47,4 +48,4 @@ class Feast:
     type: FeastType
     rank: FeastRank
 
-    hymns: HymnSet
+    hymns: Hymns

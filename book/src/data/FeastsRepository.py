@@ -7,7 +7,8 @@ from julian_calendar import (julian_to_gregorian,
                              calculate_orthodox_easter_julian)
 
 from .Feast import Feast, FeastType, FeastRank
-from .Hymn import HymnSet, Hymn, HymnType
+from .Hymn import Hymn, HymnType
+from .Hymns import Hymns
 from utils import StringUtils
 
 
@@ -98,7 +99,7 @@ class FeastsRepository:
 
             hymns = self.__read_hymns_xml(xml.findall('hymns/hymn'))
 
-            hset = HymnSet(title=title, hymns=hymns)
+            hset = Hymns(title, hymns)
 
             feast = Feast(
                 title=title,
