@@ -14,6 +14,7 @@ if __name__ == '__main__':
                         default=datetime.now().year)
 
     args = parser.parse_args()
+    print(f'Creating book for {args.year} year')
 
     book = Book(args.year)
     book.create()
