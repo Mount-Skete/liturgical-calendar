@@ -37,7 +37,7 @@ jobs:
           path: ${{ inputs.artifact-input-path }}
 
       - name: Convert ePub to AZW3
-        run: ./scripts/epub2azw.sh -o=${{ inputs.artifact-output-filename }}
+        run: ./scripts/epub2azw.sh -i=${{ inputs.artifact-input-filename }} -o=${{ inputs.artifact-output-filename }}
 
       - name: Upload AZW
         uses: actions/upload-artifact@v3
