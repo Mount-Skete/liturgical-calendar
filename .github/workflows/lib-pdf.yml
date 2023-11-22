@@ -34,7 +34,7 @@ jobs:
           path: ${{ inputs.artifact-input-path }}
 
       - name: Extract Markdown
-        run: unzip markdown.zip
+        run: unzip ${{ inputs.artifact-input-filename }}
 
       - name: Convert Markdown to ePub
         run: ./scripts/md2pdf.sh
