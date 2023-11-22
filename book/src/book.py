@@ -2,18 +2,9 @@ import locale
 from calendar import monthrange
 from datetime import datetime
 
-from data import Feast, FeastsRepository
+from data import FeastsRepository
 from julian_calendar import calculate_echo_gregorian, gregorian_to_julian
 from views.markdown import DayData, MonthData, Year, YearData, Pages
-
-
-def for_date(items: list[Feast], gregorian: datetime):
-    result = []
-    for item in items:
-        if item.gregorian.month == gregorian.month and item.gregorian.day == gregorian.day:
-            result.append(item)
-
-    return result
 
 
 class Book:
@@ -35,7 +26,7 @@ class Book:
             days_data = []
             for d in range(1, monthrange(year, m)[1] + 1):
                 gregorian_date = datetime(year, m, d)
-                ds = for_date(feasts, gregorian_date)
+                ds = feasts.for_date(gregorian_date)
 
                 if not ds:
                     print(f'No data for day g={gregorian} j={gregorian_to_julian(gregorian)}')

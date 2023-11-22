@@ -7,6 +7,7 @@ from julian_calendar import (julian_to_gregorian,
                              calculate_orthodox_easter_julian)
 
 from .Feast import Feast, FeastType, FeastRank
+from .Feasts import Feasts
 from .Hymn import Hymn, HymnType
 from .Hymns import Hymns
 from utils import StringUtils
@@ -28,14 +29,14 @@ class FeastsRepository:
         self.__year = year
         pass
 
-    def read(self) -> list[Feast]:
+    def read(self) -> Feasts:
         result = []
         for idx in range(1, 13):
             result += self.__read_xml(f'feasts_{idx:02}.xml')
 
         result += self.__read_xml('feasts_movable.xml')
 
-        return result
+        return Feasts(result)
 
     def __parse_date_xml(self, xml) -> datetime:
         if xml.find('date/julian') is not None:
