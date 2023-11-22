@@ -9,14 +9,14 @@ class TemplateBase:
 
     def get_md_month_output_path(self, date: datetime):
         name = f'{date.month:02}'
-        return os.path.join(os.path.dirname(__file__), '..', '..', '..', 'output_data', 'markdown', f'{name}.md')
+        return os.path.join(os.path.dirname(__file__), '..', '..', '..', '..', 'output_data', 'markdown', f'{name}.md')
 
     def get_md_pages_output_path(self):
-        return os.path.join(os.path.dirname(__file__), '..', '..', '..', 'output_data', 'markdown', '100_pages.md')
+        return os.path.join(os.path.dirname(__file__), '..', '..', '..', '..', 'output_data', 'markdown', '100_pages.md')
 
     @staticmethod
     def get_md_calendar_output_path():
-        return os.path.join(os.path.dirname(__file__), '..', '..', '..', 'output_data', 'markdown', '00_calendar_index.md')
+        return os.path.join(os.path.dirname(__file__), '..', '..', '..', '..', 'output_data', 'markdown', '00_calendar_index.md')
 
     @staticmethod
     def get_date_link(date: datetime):

@@ -8,12 +8,13 @@ from julian_calendar import (julian_to_gregorian,
 
 from .Feast import Feast, FeastType, FeastRank
 from .Hymn import HymnSet, Hymn, HymnType
-from book.utils import StringUtils
+from utils import StringUtils
 
 
 class FeastsRepository:
     DEFAULT_DATA_DIR = os.path.join(
         os.path.dirname(__file__),
+        '..',
         '..',
         '..',
         'data',

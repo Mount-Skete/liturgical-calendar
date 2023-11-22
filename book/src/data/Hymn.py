@@ -1,7 +1,5 @@
 from typing import Optional
-from xml.etree.ElementTree import Element
 from dataclasses import dataclass
-from book.utils import StringUtils
 from enum import Enum
 
 

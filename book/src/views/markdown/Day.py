@@ -2,7 +2,7 @@ import chevron
 from datetime import datetime
 from dataclasses import dataclass
 from .TemplateBase import TemplateBase
-from book.data import Feast, Hymn, HymnSet
+from data import Feast, Hymn, HymnSet
 
 
 @dataclass

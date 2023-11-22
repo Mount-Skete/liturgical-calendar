@@ -1,8 +1,8 @@
 import chevron
 from .TemplateBase import TemplateBase
-from book.data import Feast
+from data import Feast
 from .Page import Page
-from book.views.markdown import YearData
+from views.markdown import YearData
 
 
 class Pages(TemplateBase):
