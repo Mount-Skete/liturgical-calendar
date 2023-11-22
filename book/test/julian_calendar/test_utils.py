@@ -1,7 +1,7 @@
 from datetime import datetime
 from unittest import TestCase
 
-from julian_calendar.utils import calculate_echo_gregorian
+from julian_calendar import calculate_echo_gregorian
 
 
 class TestEchosCalculation(TestCase):
