@@ -4,6 +4,10 @@ on:
       year:
         required: true
         type: number
+      run-checks:
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   create_book:
@@ -30,6 +34,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Test
+        if: ${{ inputs.run-checks }}
         run: pytest
 
       - run: python3 book/src/main.py -y ${{ inputs.year }}

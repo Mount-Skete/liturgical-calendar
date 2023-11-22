@@ -10,6 +10,7 @@ jobs:
     uses: ./.github/workflows/lib-book.yml
     with:
       year: 2023
+      run-checks: true
 
   create_book_next:
     name: Book 2024
