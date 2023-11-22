@@ -20,7 +20,7 @@ class FeastsRepository:
         '..',
         '..',
         'data',
-        'typikon-feasts'
+        'typikon-feasts-ru'
     )
 
     __year: int
