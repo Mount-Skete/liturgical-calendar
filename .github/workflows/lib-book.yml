@@ -63,7 +63,7 @@ jobs:
 
   convert_epub_to_azw:
     name: ePub to AZW
-    uses: ./.github/workflows/lib-calibre.yml
+    uses: ./.github/workflows/lib-azw.yml
     needs: [ convert_md_to_epub ]
     with:
       artifact-input-filename: liturgical-calendar-${{ inputs.year }}.epub

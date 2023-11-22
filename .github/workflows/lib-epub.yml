@@ -37,7 +37,7 @@ jobs:
         run: unzip ${{ inputs.artifact-input-filename }}
 
       - name: Convert Markdown to ePub
-        run: ./scripts/md2epub.sh
+        run: ./scripts/md2epub.sh -o=${{ inputs.artifact-output-filename }}
 
       - name: Upload ePub
         uses: actions/upload-artifact@v3
