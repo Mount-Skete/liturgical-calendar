@@ -6,7 +6,7 @@ on:
         type: number
 
 jobs:
-  create_books_year:
+  create_book:
     name: Create books for ${{ inputs.year }}
     runs-on: ubuntu-latest
 
