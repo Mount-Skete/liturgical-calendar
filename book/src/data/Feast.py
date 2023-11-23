@@ -49,6 +49,8 @@ class Feast:
 
     hymns: Hymns
 
+    id: str | None = None
     content: list[str] = field(default_factory=list)
     content_title: str = ''
     content_link: str | None = None
+    content_ref: str | None = None

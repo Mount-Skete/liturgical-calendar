@@ -32,12 +32,31 @@ class FeastsRepository:
         self.__year = year
 
     def read_all(self) -> Feasts:
-        result = self.read_feasts_typikon()
+        typikon = self.read_feasts_typikon()
+        book = self.read_feasts_ls()
 
-        # TODO: Merge
-        result += self.read_feasts_ls()
+        refs_list = {}
+        for item in typikon:
+            if item.content_ref:
+                refs_list[item.content_ref] = item
+
+        result = typikon
+        for item in book:
+            if item.id in refs_list.keys():
+                self.merge(refs_list[item.id], item)
+            else:
+                result.append(item)
 
         return Feasts(result)
+
+    def merge(self, feast_to: Feast, feast_from: Feast):
+        feast_to.content_title = feast_from.content_title
+        feast_to.content_ref = feast_from.content_ref
+        feast_to.content_link = feast_from.content_link
+        feast_to.content = feast_from.content
+        feast_to.title = feast_from.title
+
+        # TODO: Hymns
 
     def read_feasts_typikon(self) -> list[Feast]:
         result = []
@@ -50,7 +69,7 @@ class FeastsRepository:
 
         return result
 
-    def read_feasts_ls(self) -> list[Feast]:
+    def read_feasts_ls(self) -> Feasts:
         result = []
 
         for m_idx in range(1, 13):
@@ -58,7 +77,7 @@ class FeastsRepository:
                 result += self.__read_xml(
                     os.path.join(self.LS_DATA_DIR, f'{m_idx:02}', f'{d_idx:02}.xml'))
 
-        return result
+        return Feasts(result)
 
     def __read_xml(self, path):
         root = ET.parse(path).getroot()

@@ -23,6 +23,7 @@ class FeastsXmlSerializer:
 
     @staticmethod
     def read_one(xml: Element, year: int):
+        id = xml.get('id', '')
         title = xml.find('title/ru').text
         julian = FeastsXmlSerializer.__parse_date_xml(xml, year)
 
@@ -49,7 +50,13 @@ class FeastsXmlSerializer:
             for text_el in xml.findall('content/text/ru/p'):
                 content.append(text_el.text)
 
+        content_ref = None
+        if xml.find('refs') is not None:
+            ref_el = xml.find('refs/ref')
+            content_ref = ref_el.get('id')
+
         feast = Feast(
+            id=id,
             title=title,
             julian=julian,
             gregorian=gregorian,
@@ -58,7 +65,8 @@ class FeastsXmlSerializer:
             hymns=hset,
             content_title=content_title,
             content=content,
-            content_link=content_link
+            content_link=content_link,
+            content_ref=content_ref
         )
 
         return feast
