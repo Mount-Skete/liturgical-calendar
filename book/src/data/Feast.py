@@ -1,8 +1,7 @@
+from dataclasses import dataclass, field
+from datetime import datetime
 from enum import Enum
-from datetime import datetime, timedelta
-from dataclasses import dataclass
 
-from .Hymn import Hymn
 from .Hymns import Hymns
 
 
@@ -49,3 +48,7 @@ class Feast:
     rank: FeastRank
 
     hymns: Hymns
+
+    content: list[str] = field(default_factory=list)
+    content_title: str = ''
+    content_link: str | None = None

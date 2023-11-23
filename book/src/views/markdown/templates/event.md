@@ -1,4 +1,4 @@
-## {{header}} {#{{id}}}
+## {{content_title}} {#{{content_link}}}
 
 {{#content}}
 {{.}}

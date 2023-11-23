@@ -18,5 +18,6 @@
 
 ### Праздники
 {{#feasts}}
-* [{{title}}](#{{id}})
+* [{{title}}](#{{content_link}})
 {{/feasts}}
+

@@ -12,7 +12,7 @@ class TemplateBase:
         return os.path.join(os.path.dirname(__file__), '..', '..', '..', '..', 'output_data', 'markdown', f'{name}.md')
 
     def get_md_pages_output_path(self):
-        return os.path.join(os.path.dirname(__file__), '..', '..', '..', '..', 'output_data', 'markdown', '100_pages.md')
+        return os.path.join(os.path.dirname(__file__), '..', '..', '..', '..', 'output_data', 'markdown', 'pages.md')
 
     @staticmethod
     def get_md_calendar_output_path():

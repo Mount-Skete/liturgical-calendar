@@ -31,6 +31,14 @@ class Pages(TemplateBase):
 
         for month in year_data.monthsData:
             for day in month.daysData:
-                events.extend(day.feasts)
+                events.extend(self.filter_with_content(day.feasts))
 
         return self.to_file(events)
+
+    def filter_with_content(self, feasts: list[Feast]):
+        result = []
+        for feast in feasts:
+            if feast.content_link is not None:
+                result.append(feast)
+
+        return result

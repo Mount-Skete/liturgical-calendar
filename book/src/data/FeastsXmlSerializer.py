@@ -38,13 +38,27 @@ class FeastsXmlSerializer:
 
         hset = Hymns(title, hymns)
 
+        content_title = ''
+        content = []
+        content_link = None
+        if xml.find('content') is not None:
+            content_link = xml.get('id')
+            if xml.find('content/title/ru') is not None:
+                content_title = xml.find('content/title/ru').text
+
+            for text_el in xml.findall('content/text/ru/p'):
+                content.append(text_el.text)
+
         feast = Feast(
             title=title,
             julian=julian,
             gregorian=gregorian,
             type=feast_type,
             rank=feast_rank,
-            hymns=hset
+            hymns=hset,
+            content_title=content_title,
+            content=content,
+            content_link=content_link
         )
 
         return feast
