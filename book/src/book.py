@@ -18,7 +18,9 @@ class Book:
 
         year = self.__year
         feasts = FeastsRepository(year)
-        feasts = feasts.read()
+        feasts = feasts.read_all()
+
+        print(f'Loaded {len(feasts)} feasts')
 
         m_data = []
         for m in range(1, 13):

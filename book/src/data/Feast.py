@@ -17,7 +17,7 @@ class FeastType(Enum):
             if label == e.value:
                 return e
 
-        raise NotImplementedError()
+        return None
 
 
 # https://azbyka.ru/days/p-znaki-prazdnikov
@@ -35,7 +35,7 @@ class FeastRank(Enum):
             if label == e.value:
                 return e
 
-        raise NotImplementedError
+        return None
 
 
 @dataclass
