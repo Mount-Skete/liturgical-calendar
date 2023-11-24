@@ -80,12 +80,5 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            markdown-2023.zip
-            liturgical-calendar-2023.pdf
-            liturgical-calendar-2023.epub
-            liturgical-calendar-2023.azw3
-            markdown-2024.zip
-            liturgical-calendar-2024.pdf
-            liturgical-calendar-2024.epub
-            liturgical-calendar-2024.azw3
+            *
           generate_release_notes: false
