@@ -60,4 +60,7 @@ class Calendar(calendar.TextCalendar):
         result = self.formatyear(year, w=1, l=1, c=1, m=1)
 
         with open(path, 'w+') as f:
+            # TODO: Fix direct write
+            f.write('# Календарь 2023\n\n')
+
             return f.write(result)

@@ -4,7 +4,7 @@ from datetime import datetime
 
 from data import FeastsRepository
 from julian_calendar import calculate_echo_gregorian, gregorian_to_julian
-from views.markdown import DayData, MonthData, Year, YearData, Pages
+from views.markdown import DayData, MonthData, Year, YearData, Pages, TemplateBase, Calendar
 
 
 class Book:
@@ -21,6 +21,9 @@ class Book:
         feasts = feasts.read_all()
 
         print(f'Loaded {len(feasts)} feasts')
+
+        cal = Calendar()
+        cal.tofile(year, TemplateBase.get_md_calendar_output_path())
 
         m_data = []
         for m in range(1, 13):
