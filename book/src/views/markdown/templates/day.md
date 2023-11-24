@@ -2,6 +2,10 @@
 
 ст. ст.: {{julian_date_formatted}} Глас: {{echo}}
 
+{{#feasts}}
+* [{{title}}](#{{content_link}})
+{{/feasts}}
+
 #### Тропари, кондаки
 {{#hymns}}
 
@@ -15,9 +19,4 @@
 {{/hymns}}
 
 {{/hymns}}
-
-### Праздники
-{{#feasts}}
-* [{{title}}](#{{content_link}})
-{{/feasts}}
 
