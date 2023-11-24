@@ -36,4 +36,4 @@ DIR="$(realpath "$(dirname "$0")")"
 
 ebook-convert "${DIR}"/../output_data/epub/"${INPUT_FILENAME}" \
              "${DIR}"/../output_data/azw/"${OUTPUT_FILENAME}" \
-             --dont-compress
+#             --dont-compress
