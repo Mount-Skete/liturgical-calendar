@@ -32,49 +32,41 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: markdown-2023.zip
-          path: markdown-2023.zip
 
       - name: Download PDF 2023
         uses: actions/download-artifact@v3
         with:
           name: liturgical-calendar-2023.pdf
-          path: liturgical-calendar-2023.pdf
 
       - name: Download ePub 2023
         uses: actions/download-artifact@v3
         with:
           name: liturgical-calendar-2023.epub
-          path: liturgical-calendar-2023.epub
 
       - name: Download AZW3 2023
         uses: actions/download-artifact@v3
         with:
           name: liturgical-calendar-2023.azw3
-          path: liturgical-calendar-2023.azw3
 
       - name: Download Markdown 2024
         uses: actions/download-artifact@v3
         with:
           name: markdown-2024.zip
-          path: markdown-2024.zip
 
       - name: Download PDF 2024
         uses: actions/download-artifact@v3
         with:
           name: liturgical-calendar-2024.pdf
-          path: liturgical-calendar-2024.pdf
 
       - name: Download ePub 2024
         uses: actions/download-artifact@v3
         with:
           name: liturgical-calendar-2024.epub
-          path: liturgical-calendar-2024.epub
 
       - name: Download AZW3 2024
         uses: actions/download-artifact@v3
         with:
           name: liturgical-calendar-2024.azw3
-          path: liturgical-calendar-2024.azw3
 
       - name: Release
         uses: softprops/action-gh-release@v1
