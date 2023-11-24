@@ -17,3 +17,8 @@ class Hymn:
 
     header: Optional[str] = ''
     type: Optional[HymnType] = HymnType.Troparion
+
+
+@dataclass
+class WeeklyHymn(Hymn):
+    weekday: int = 0

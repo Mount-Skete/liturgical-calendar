@@ -2,7 +2,7 @@ import locale
 from calendar import monthrange
 from datetime import datetime
 
-from data import FeastsRepository
+from data import FeastsRepository, DailyHymns
 from julian_calendar import calculate_echo_gregorian, gregorian_to_julian
 from views.markdown import DayData, MonthData, Year, YearData, Pages, TemplateBase, Calendar
 
@@ -25,6 +25,8 @@ class Book:
         cal = Calendar()
         cal.tofile(year, TemplateBase.get_md_calendar_output_path())
 
+        wh = DailyHymns()
+
         m_data = []
         for m in range(1, 13):
             gregorian = datetime(year, m, 1)
@@ -38,11 +40,13 @@ class Book:
                     continue
 
                 echo = calculate_echo_gregorian(gregorian_date)
+                daily_hymn = wh.for_date(gregorian_date, echo)
 
                 days_data.append(DayData(gregorian_date=gregorian_date,
                                          julian_date=gregorian_to_julian(gregorian_date),
                                          feasts=ds,
-                                         echo=echo))
+                                         echo=echo,
+                                         daily_hymn=daily_hymn))
 
             m_data.append(MonthData(gregorian_date=gregorian, daysData=days_data))
 

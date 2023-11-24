@@ -3,7 +3,7 @@ from datetime import datetime
 
 import chevron
 
-from data import Feast, Hymns
+from data import Feast, Hymns, Hymn, WeeklyHymn
 from .TemplateBase import TemplateBase
 
 
@@ -13,6 +13,7 @@ class DayData:
     julian_date: datetime
     feasts: list[Feast]
     echo: int
+    daily_hymn: WeeklyHymn
 
     @property
     def gregorian_date_formatted(self) -> str:
@@ -28,7 +29,8 @@ class DayData:
 
     @property
     def hymns(self) -> list[Hymns]:
-        hymns = []
+        daily = Hymns(self.daily_hymn.title, hymns=[self.daily_hymn])
+        hymns = [daily]
         for feast in self.feasts:
             hymns.append(feast.hymns)
 
