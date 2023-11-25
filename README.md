@@ -34,7 +34,7 @@ sudo apt-get install language-pack-ru
 python3 book/src/main.py -y 2024
 ```
 
-# Конвертация текстов в ePub, AZW3 и PDF.
+# Конвертация текстов в ePub, AZW3 и PDF
 
 ## ePub 3
 
