@@ -71,6 +71,17 @@ jobs:
       artifact-output-filename: liturgical-calendar-${{ inputs.year }}.epub
       artifact-output-path: ./output_data/epub/liturgical-calendar-${{ inputs.year }}.epub
 
+  convert_md_to_fb2:
+    name: Markdown to fb2
+    uses: ./.github/workflows/lib-fb2.yml
+    needs: [ create_book ]
+    with:
+      year: ${{ inputs.year }}
+      artifact-input-filename: markdown-${{ inputs.year }}.zip
+      artifact-input-path: '.'
+      artifact-output-filename: liturgical-calendar-${{ inputs.year }}.fb2
+      artifact-output-path: ./output_data/epub/liturgical-calendar-${{ inputs.year }}.fb2
+
   convert_epub_to_azw:
     name: ePub to AZW
     uses: ./.github/workflows/lib-azw.yml

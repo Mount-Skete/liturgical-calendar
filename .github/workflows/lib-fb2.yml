@@ -1,0 +1,50 @@
+on:
+  workflow_call:
+    inputs:
+      year:
+        required: false
+        type: number
+      artifact-input-filename:
+        required: true
+        type: string
+      artifact-input-path:
+        required: true
+        type: string
+      artifact-output-filename:
+        required: true
+        type: string
+      artifact-output-path:
+        required: true
+        type: string
+
+jobs:
+  md_to_epub:
+    name: Markdown to FB2
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install dependencies
+        run: sudo apt-get install -y pandoc
+
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ inputs.artifact-input-filename }}
+          path: ${{ inputs.artifact-input-path }}
+
+      - name: Extract Markdown
+        run: unzip ${{ inputs.artifact-input-filename }}
+
+      - name: Convert Markdown to FB2
+        run: ./scripts/md2fb2.sh -o=${{ inputs.artifact-output-filename }} -y=${{ inputs.year }}
+
+      - name: Upload ePub
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.artifact-output-filename }}
+          path: ${{ inputs.artifact-output-path }}
+          retention-days: 7

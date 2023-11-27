@@ -48,6 +48,11 @@ jobs:
         with:
           name: liturgical-calendar-2023.azw3
 
+      - name: Download FB2 2023
+        uses: actions/download-artifact@v3
+        with:
+          name: liturgical-calendar-2023.fb2
+
       - name: Download Markdown 2024
         uses: actions/download-artifact@v3
         with:
@@ -67,6 +72,11 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: liturgical-calendar-2024.azw3
+
+      - name: Download FB2 2024
+        uses: actions/download-artifact@v3
+        with:
+          name: liturgical-calendar-2024.fb2
 
       - name: Release
         uses: softprops/action-gh-release@v1
