@@ -61,6 +61,6 @@ class Calendar(calendar.TextCalendar):
 
         with open(path, 'w+') as f:
             # TODO: Fix direct write
-            f.write('# Календарь 2023\n\n')
+            f.write(f'# Календарь Православных Праздников {year}\n\n')
 
             return f.write(result)

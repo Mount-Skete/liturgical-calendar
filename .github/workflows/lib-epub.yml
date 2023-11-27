@@ -1,6 +1,9 @@
 on:
   workflow_call:
     inputs:
+      year:
+        required: false
+        type: number
       artifact-input-filename:
         required: true
         type: string
@@ -37,7 +40,7 @@ jobs:
         run: unzip ${{ inputs.artifact-input-filename }}
 
       - name: Convert Markdown to ePub
-        run: ./scripts/md2epub.sh -o=${{ inputs.artifact-output-filename }}
+        run: ./scripts/md2epub.sh -o=${{ inputs.artifact-output-filename }} -y=${{ inputs.year }}
 
       - name: Upload ePub
         uses: actions/upload-artifact@v3

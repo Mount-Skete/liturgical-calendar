@@ -6,6 +6,10 @@ for i in "$@"; do
       OUTPUT="${i#*=}"
       shift
       ;;
+    -y=*|--year=*)
+      YEAR="${i#*=}"
+      shift
+      ;;
     -*|--*)
       echo "Unknown option $i"
       exit 1
@@ -20,14 +24,19 @@ if [ "$OUTPUT" ]; then
   OUTPUT_FILENAME="${OUTPUT}"
 fi
 
+if [ -z "$YEAR" ]; then
+  YEAR=$(date +%Y)
+fi
+
 echo "Output filename '${OUTPUT_FILENAME}'"
+echo "Year: $YEAR"
 
 DIR="$(realpath "$(dirname "$0")")"
 
 pandoc "${DIR}"/../output_data/markdown/*.md -f markdown+pipe_tables -t pdf \
     -o "${DIR}"/../output_data/pdf/"${OUTPUT_FILENAME}" \
     --toc --toc-depth 1 --verbose \
-    --metadata title="Церковный Календарь" \
+    --metadata title="Календарь Православных Праздников ${YEAR}" \
     --metadata author="свт. Димитрий Ростовский" \
     --pdf-engine=xelatex \
     -V fontenc=T2A \

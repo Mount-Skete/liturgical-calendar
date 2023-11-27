@@ -54,6 +54,7 @@ jobs:
     uses: ./.github/workflows/lib-pdf.yml
     needs: [ create_book ]
     with:
+      year: ${{ inputs.year }}
       artifact-input-filename: markdown-${{ inputs.year }}.zip
       artifact-input-path: '.'
       artifact-output-filename: liturgical-calendar-${{ inputs.year }}.pdf
@@ -64,6 +65,7 @@ jobs:
     uses: ./.github/workflows/lib-epub.yml
     needs: [ create_book ]
     with:
+      year: ${{ inputs.year }}
       artifact-input-filename: markdown-${{ inputs.year }}.zip
       artifact-input-path: '.'
       artifact-output-filename: liturgical-calendar-${{ inputs.year }}.epub
