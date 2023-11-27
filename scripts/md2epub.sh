@@ -33,7 +33,7 @@ echo "Year: $YEAR"
 
 DIR="$(realpath "$(dirname "$0")")"
 
-pandoc "${DIR}"/../output_data/markdown/*.md -f markdown+pipe_tables -t epub3 \
+pandoc "${DIR}"/../output_data/markdown/*.md -f markdown+pipe_tables+raw_html -t epub3 \
     -o "${DIR}"/../output_data/epub/"${OUTPUT_FILENAME}" \
     --toc --toc-depth 1 --verbose \
     --metadata title="Календарь Православных Праздников ${YEAR}" \

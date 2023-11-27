@@ -28,6 +28,10 @@ class DayData:
         return TemplateBase.get_date_link(self.gregorian_date)
 
     @property
+    def page_break(self) -> str:
+        return '<div style="page-break-before:always;"></div>'
+
+    @property
     def hymns(self) -> list[Hymns]:
         daily = Hymns(self.daily_hymn.title, hymns=[self.daily_hymn])
         hymns = [daily]
