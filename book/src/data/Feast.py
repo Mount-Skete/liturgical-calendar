@@ -2,6 +2,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
 
+from views.markdown import TemplateBase
 from .Hymns import Hymns
 
 
@@ -54,3 +55,11 @@ class Feast:
     content_title: str = ''
     content_link: str | None = None
     content_ref: str | None = None
+
+    @property
+    def gregorian_date_formatted(self) -> str:
+        return self.gregorian.strftime('%d %B (%A)')
+
+    @property
+    def date_link(self) -> str:
+        return TemplateBase.get_date_link(self.gregorian)
