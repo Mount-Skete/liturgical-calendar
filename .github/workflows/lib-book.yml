@@ -80,7 +80,7 @@ jobs:
       artifact-input-filename: markdown-${{ inputs.year }}.zip
       artifact-input-path: '.'
       artifact-output-filename: liturgical-calendar-${{ inputs.year }}.fb2
-      artifact-output-path: ./output_data/epub/liturgical-calendar-${{ inputs.year }}.fb2
+      artifact-output-path: ./output_data/fb2/liturgical-calendar-${{ inputs.year }}.fb2
 
   convert_epub_to_azw:
     name: ePub to AZW
