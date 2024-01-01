@@ -43,7 +43,7 @@ jobs:
         run: ./scripts/md2epub.sh -o=${{ inputs.artifact-output-filename }} -y=${{ inputs.year }}
 
       - name: Upload ePub
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.artifact-output-filename }}
           path: ${{ inputs.artifact-output-path }}

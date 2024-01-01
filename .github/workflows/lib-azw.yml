@@ -40,7 +40,7 @@ jobs:
         run: ./scripts/epub2azw.sh -i=${{ inputs.artifact-input-filename }} -o=${{ inputs.artifact-output-filename }}
 
       - name: Upload AZW
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.artifact-output-filename }}
           path: ${{ inputs.artifact-output-path }}
