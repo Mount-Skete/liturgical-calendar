@@ -48,7 +48,7 @@ jobs:
 #          name: markdown-${{ inputs.year }}.zip
 #          path: markdown-${{ inputs.year }}.zip
           name: markdown-${{ inputs.year }}
-          path: /output_data/markdown/
+          path: output_data/markdown/
           compression-level: 9
           if-no-files-found: error
           retention-days: 7
