@@ -39,14 +39,18 @@ jobs:
 
       - run: python3 book/src/main.py -y ${{ inputs.year }}
 
-      - name: Compress Markdown
-        run: zip markdown-${{ inputs.year }}.zip ./output_data/markdown/*
+#      - name: Compress Markdown
+#        run: zip markdown-${{ inputs.year }}.zip ./output_data/markdown/*
 
       - name: Upload Markdown
         uses: actions/upload-artifact@v4
         with:
-          name: markdown-${{ inputs.year }}.zip
-          path: markdown-${{ inputs.year }}.zip
+#          name: markdown-${{ inputs.year }}.zip
+#          path: markdown-${{ inputs.year }}.zip
+          name: markdown-${{ inputs.year }}
+          path: /output_data/markdown/
+          compression-level: 9
+          if-no-files-found: error
           retention-days: 7
 
   convert_md_to_pdf:
