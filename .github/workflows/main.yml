@@ -6,14 +6,13 @@ on:
 
 jobs:
   create_book_current:
-    name: Book 2024
+
+    strategy:
+      matrix:
+        year: [2024]
+
+    name: Book ${{ matrix.year }}
     uses: ./.github/workflows/lib-book.yml
     with:
-      year: 2024
+      year: ${{ matrix.year }}
       run-checks: true
-
-#  create_book_next:
-#    name: Book 2024
-#    uses: ./.github/workflows/lib-book.yml
-#    with:
-#      year: 2024
