@@ -59,7 +59,7 @@ jobs:
     needs: [ create_book ]
     with:
       year: ${{ inputs.year }}
-      artifact-input-filename: markdown-${{ inputs.year }}.zip
+      artifact-input-filename: markdown-${{ inputs.year }}
       artifact-input-path: '.'
       artifact-output-filename: liturgical-calendar-${{ inputs.year }}.pdf
       artifact-output-path: ./output_data/pdf/liturgical-calendar-${{ inputs.year }}.pdf
@@ -70,7 +70,7 @@ jobs:
     needs: [ create_book ]
     with:
       year: ${{ inputs.year }}
-      artifact-input-filename: markdown-${{ inputs.year }}.zip
+      artifact-input-filename: markdown-${{ inputs.year }}
       artifact-input-path: '.'
       artifact-output-filename: liturgical-calendar-${{ inputs.year }}.epub
       artifact-output-path: ./output_data/epub/liturgical-calendar-${{ inputs.year }}.epub
@@ -81,7 +81,7 @@ jobs:
     needs: [ create_book ]
     with:
       year: ${{ inputs.year }}
-      artifact-input-filename: markdown-${{ inputs.year }}.zip
+      artifact-input-filename: markdown-${{ inputs.year }}
       artifact-input-path: '.'
       artifact-output-filename: liturgical-calendar-${{ inputs.year }}.fb2
       artifact-output-path: ./output_data/fb2/liturgical-calendar-${{ inputs.year }}.fb2
