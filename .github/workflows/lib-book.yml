@@ -48,7 +48,7 @@ jobs:
 #          name: markdown-${{ inputs.year }}.zip
 #          path: markdown-${{ inputs.year }}.zip
           name: markdown-${{ inputs.year }}
-          path: output_data/markdown/
+          path: ./output_data/markdown/
           compression-level: 9
           if-no-files-found: error
           retention-days: 7
@@ -71,7 +71,7 @@ jobs:
     with:
       year: ${{ inputs.year }}
       artifact-input-filename: markdown-${{ inputs.year }}
-      artifact-input-path: '.'
+      artifact-input-path: ./output_data/markdown/
       artifact-output-filename: liturgical-calendar-${{ inputs.year }}.epub
       artifact-output-path: ./output_data/epub/liturgical-calendar-${{ inputs.year }}.epub
 
