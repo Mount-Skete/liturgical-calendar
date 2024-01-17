@@ -28,8 +28,30 @@ jobs:
       contents: write
     needs: [ create_book_current ]
     steps:
-      - name: Download All
-        uses: actions/download-artifact@v4
+      - name: Download Markdown 2024
+        uses: actions/download-artifact@v3
+        with:
+          name: markdown-2024.zip
+
+      - name: Download PDF 2024
+        uses: actions/download-artifact@v3
+        with:
+          name: liturgical-calendar-2024.pdf
+
+      - name: Download ePub 2024
+        uses: actions/download-artifact@v3
+        with:
+          name: liturgical-calendar-2024.epub
+
+      - name: Download AZW3 2024
+        uses: actions/download-artifact@v3
+        with:
+          name: liturgical-calendar-2024.azw3
+
+      - name: Download FB2 2024
+        uses: actions/download-artifact@v3
+        with:
+          name: liturgical-calendar-2024.fb2
 
       - name: Release
         uses: softprops/action-gh-release@v1
