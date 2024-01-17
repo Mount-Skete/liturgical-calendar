@@ -29,7 +29,7 @@ jobs:
     needs: [ create_book_current ]
     steps:
       - name: Download Markdown 2024
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: markdown-2024
           path: ./markdown/
@@ -38,22 +38,22 @@ jobs:
         run: zip markdown-2024.zip ./markdown/*
 
       - name: Download PDF 2024
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: liturgical-calendar-2024.pdf
 
       - name: Download ePub 2024
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: liturgical-calendar-2024.epub
 
       - name: Download AZW3 2024
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: liturgical-calendar-2024.azw3
 
       - name: Download FB2 2024
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: liturgical-calendar-2024.fb2
 
