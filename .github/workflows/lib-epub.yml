@@ -36,10 +36,6 @@ jobs:
           name: ${{ inputs.artifact-input-filename }}
           path: ${{ inputs.artifact-input-path }}
 
-      - name: Extract Markdown
-        run: ls -la
-#        run: unzip ${{ inputs.artifact-input-filename }}
-
       - name: Convert Markdown to ePub
         run: ./scripts/md2epub.sh -o=${{ inputs.artifact-output-filename }} -y=${{ inputs.year }}
 

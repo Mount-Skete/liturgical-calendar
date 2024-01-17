@@ -39,14 +39,9 @@ jobs:
 
       - run: python3 book/src/main.py -y ${{ inputs.year }}
 
-#      - name: Compress Markdown
-#        run: zip markdown-${{ inputs.year }}.zip ./output_data/markdown/*
-
       - name: Upload Markdown
         uses: actions/upload-artifact@v4
         with:
-#          name: markdown-${{ inputs.year }}.zip
-#          path: markdown-${{ inputs.year }}.zip
           name: markdown-${{ inputs.year }}
           path: ./output_data/markdown/
           compression-level: 9
@@ -60,7 +55,7 @@ jobs:
     with:
       year: ${{ inputs.year }}
       artifact-input-filename: markdown-${{ inputs.year }}
-      artifact-input-path: '.'
+      artifact-input-path: ./output_data/markdown/
       artifact-output-filename: liturgical-calendar-${{ inputs.year }}.pdf
       artifact-output-path: ./output_data/pdf/liturgical-calendar-${{ inputs.year }}.pdf
 
@@ -82,7 +77,7 @@ jobs:
     with:
       year: ${{ inputs.year }}
       artifact-input-filename: markdown-${{ inputs.year }}
-      artifact-input-path: '.'
+      artifact-input-path: ./output_data/markdown/
       artifact-output-filename: liturgical-calendar-${{ inputs.year }}.fb2
       artifact-output-path: ./output_data/fb2/liturgical-calendar-${{ inputs.year }}.fb2
 
