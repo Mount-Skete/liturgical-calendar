@@ -29,7 +29,7 @@ jobs:
     needs: [ create_book_current, create_book_next ]
     steps:
       - name: Download All
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
 
       - name: Release
         uses: softprops/action-gh-release@v1
