@@ -26,7 +26,7 @@ jobs:
       actions: read
       id-token: write
       contents: write
-    needs: [ create_book_current, create_book_next ]
+    needs: [ create_book_current ]
     steps:
       - name: Download All
         uses: actions/download-artifact@v4
