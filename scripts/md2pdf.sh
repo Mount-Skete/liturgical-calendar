@@ -35,7 +35,7 @@ DIR="$(realpath "$(dirname "$0")")"
 
 pandoc "${DIR}"/../output_data/markdown/*.md -f markdown+pipe_tables -t pdf \
     -o "${DIR}"/../output_data/pdf/"${OUTPUT_FILENAME}" \
-    --toc --toc-depth 1 --verbose \
+    --toc --toc-depth 2 --verbose \
     --metadata title="Календарь Православных Праздников ${YEAR}" \
     --metadata author="свт. Димитрий Ростовский" \
     --pdf-engine=xelatex \
