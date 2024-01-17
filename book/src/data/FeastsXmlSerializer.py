@@ -7,6 +7,7 @@ from julian_calendar import (julian_to_gregorian,
 from .Feast import Feast, FeastType, FeastRank
 from .Hymns import Hymns
 from .HymnsXmlSerializer import HymnsXmlSerializer
+from utils.StringUtils import StringUtils
 
 
 class FeastsXmlSerializer:
@@ -24,7 +25,7 @@ class FeastsXmlSerializer:
     @staticmethod
     def read_one(xml: Element, year: int):
         id = xml.get('id', '')
-        title = xml.find('title/ru').text
+        title = StringUtils.clean_all(xml.find('title/ru').text)
         julian = FeastsXmlSerializer.__parse_date_xml(xml, year)
 
         if not julian:
@@ -45,7 +46,7 @@ class FeastsXmlSerializer:
         if xml.find('content') is not None:
             content_link = xml.get('id')
             if xml.find('content/title/ru') is not None:
-                content_title = xml.find('content/title/ru').text
+                content_title = StringUtils.clean_all(xml.find('content/title/ru').text)
 
             for text_el in xml.findall('content/text/ru/p'):
                 content.append(text_el.text)

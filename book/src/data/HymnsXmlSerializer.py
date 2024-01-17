@@ -22,7 +22,7 @@ class HymnsXmlSerializer:
         hymn_type = HymnType.Troparion if xml.get('type') == 'troparion' else HymnType.Kontakion
 
         hymn = Hymn(
-            title=StringUtils.clean(xml.find('title/ru').text),
+            title=StringUtils.clean_all(xml.find('title/ru').text),
             content=StringUtils.clean(xml.find('content/ru').text),
             echo=xml.get('echo', 0),
             type=hymn_type
@@ -46,7 +46,7 @@ class HymnsXmlSerializer:
         hymn_type = HymnType.Troparion if xml.get('type') == 'troparion' else HymnType.Kontakion
 
         hymn = WeeklyHymn(
-            title=StringUtils.clean(xml.find('title/ru').text),
+            title=StringUtils.clean_all(xml.find('title/ru').text),
             content=StringUtils.clean(xml.find('content/ru').text),
             echo=int(xml.get('echo', 0)),
             type=hymn_type,
