@@ -6,14 +6,14 @@ on:
 
 jobs:
   create_book_current:
-    name: Book 2023
-    uses: ./.github/workflows/lib-book.yml
-    with:
-      year: 2023
-      run-checks: true
-
-  create_book_next:
     name: Book 2024
     uses: ./.github/workflows/lib-book.yml
     with:
       year: 2024
+      run-checks: true
+
+#  create_book_next:
+#    name: Book 2024
+#    uses: ./.github/workflows/lib-book.yml
+#    with:
+#      year: 2024
