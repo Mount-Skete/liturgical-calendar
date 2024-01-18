@@ -44,4 +44,6 @@ jobs:
         with:
           name: ${{ inputs.artifact-output-filename }}
           path: ${{ inputs.artifact-output-path }}
+          compression-level: 9
+          if-no-files-found: error
           retention-days: 7
