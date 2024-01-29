@@ -39,7 +39,7 @@ class FastsTestCase(unittest.TestCase):
         actual = self.repo.fasts.for_date(datetime(2024, 1, 24))
 
         self.assertIsNotNone(actual.fast)
-        self.assertEqual('no-oil', actual.fast_type.id)
+        self.assertEqual('oil', actual.fast_type.id)
         self.assertIsNotNone(actual.fast_type.title)
 
     def test_fasts_ordinary_thu(self):
@@ -53,7 +53,7 @@ class FastsTestCase(unittest.TestCase):
         actual = self.repo.fasts.for_date(datetime(2024, 1, 26))
 
         self.assertIsNotNone(actual.fast)
-        self.assertEqual('no-oil', actual.fast_type.id)
+        self.assertEqual('oil', actual.fast_type.id)
         self.assertIsNotNone(actual.fast_type.title)
 
     def test_fasts_ordinary_sun(self):
@@ -91,11 +91,20 @@ class FastsTestCase(unittest.TestCase):
 
         self.assertTrue(actual)
 
-    def test_pre_lent_sun(self):
-        actual = self.repo.fasts.for_date(datetime(2024, 3, 17))
+    def test_lent_special_1(self):
+        repo2023 = FastsRepository(2023, self.FASTS_DATA_PATH)
+        actual = repo2023.fasts.for_date(datetime(2023, 4, 8))
 
-        self.assertIsNone(actual.fast)
-        self.assertEqual('no-fast', actual.fast_type.id)
+        print(datetime(2023, 4, 8) - datetime(2023, 2, 27))
+        self.assertEqual('roe', actual.fast_type.id)
+        self.assertIsNotNone(actual.fast_type.title)
+
+    def test_lent_special_2(self):
+        repo2023 = FastsRepository(2023, self.FASTS_DATA_PATH)
+        actual = repo2023.fasts.for_date(datetime(2023, 4, 9))
+
+        print(datetime(2023, 4, 9) - datetime(2023, 2, 27))
+        self.assertEqual('fish', actual.fast_type.id)
         self.assertIsNotNone(actual.fast_type.title)
 
     def test_lent_start_mon(self):
@@ -109,14 +118,14 @@ class FastsTestCase(unittest.TestCase):
         actual = self.repo.fasts.for_date(datetime(2024, 3, 25))
 
         self.assertEqual('fast:lent', actual.fast.id)
-        self.assertEqual('no-oil', actual.fast_type.id)
+        self.assertEqual('dry', actual.fast_type.id)
         self.assertIsNotNone(actual.fast_type.title)
 
     def test_lent_tue_w2(self):
         actual = self.repo.fasts.for_date(datetime(2024, 3, 26))
 
         self.assertEqual('fast:lent', actual.fast.id)
-        self.assertEqual('no-oil', actual.fast_type.id)
+        self.assertEqual('dry', actual.fast_type.id)
         self.assertIsNotNone(actual.fast_type.title)
 
     def test_lent_wed_w2(self):
@@ -130,7 +139,7 @@ class FastsTestCase(unittest.TestCase):
         actual = self.repo.fasts.for_date(datetime(2024, 3, 28))
 
         self.assertEqual('fast:lent', actual.fast.id)
-        self.assertEqual('no-oil', actual.fast_type.id)
+        self.assertEqual('oil', actual.fast_type.id)
         self.assertIsNotNone(actual.fast_type.title)
 
     def test_lent_fri_w2(self):
@@ -257,8 +266,8 @@ class FastsTestCase(unittest.TestCase):
         repo2023 = FastsRepository(2023, self.FASTS_DATA_PATH)
         actual = repo2023.fasts.by_id('fast:cheese')
 
-        self.assertEqual(datetime(2023, 2, 13), actual.start)
-        self.assertEqual(datetime(2023, 2, 19), actual.end)
+        self.assertEqual(datetime(2023, 2, 19), actual.start)
+        self.assertEqual(datetime(2023, 2, 26), actual.end)
 
     def test_special_week_easter_period(self):
         repo2023 = FastsRepository(2023, self.FASTS_DATA_PATH)
