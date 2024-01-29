@@ -12,7 +12,9 @@ class FastsTestCase(unittest.TestCase):
         '..',
         '..',
         '..',
-        'res',
+        '..',
+        'data',
+        'fasts-ru',
         'fasts.xml'
     )
 
