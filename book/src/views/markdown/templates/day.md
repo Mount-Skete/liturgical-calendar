@@ -2,6 +2,8 @@
 
 ст. ст.: {{julian_date_formatted}} Глас: {{echo}}
 
+{{fast_data.format_display}}
+
 {{#feasts}}
 * [{{title}}](#{{content_link}})
 {{/feasts}}

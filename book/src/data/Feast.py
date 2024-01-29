@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
 
-from views.markdown import TemplateBase
+# from views.markdown import TemplateBase
 from .Hymns import Hymns
 
 
@@ -62,4 +62,8 @@ class Feast:
 
     @property
     def date_link(self) -> str:
-        return TemplateBase.get_date_link(self.gregorian)
+        return Feast.get_date_link(self.gregorian)
+
+    @staticmethod
+    def get_date_link(date: datetime):
+        return date.strftime('date-%Y-%m-%d')

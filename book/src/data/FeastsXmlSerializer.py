@@ -4,10 +4,10 @@ from xml.etree.ElementTree import Element
 
 from julian_calendar import (julian_to_gregorian,
                              calculate_orthodox_easter_julian)
+from utils.StringUtils import StringUtils
 from .Feast import Feast, FeastType, FeastRank
 from .Hymns import Hymns
 from .HymnsXmlSerializer import HymnsXmlSerializer
-from utils.StringUtils import StringUtils
 
 
 class FeastsXmlSerializer:

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<fasts>
+    <types>
+        <fastType id="type-1">
+            <title>
+                <ru>Type 1</ru>
+            </title>
+        </fastType>
+        <fastType id="type-2">
+            <title>
+                <ru>Type 2</ru>
+            </title>
+        </fastType>
+    </types>
+</fasts>

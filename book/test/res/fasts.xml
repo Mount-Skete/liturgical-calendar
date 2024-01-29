@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<fasts>
+    <types>
+        <fastType id="type-1">
+            <title>
+                <ru>Type 1</ru>
+            </title>
+        </fastType>
+        <fastType id="type-2">
+            <title>
+                <ru>Type 2</ru>
+            </title>
+        </fastType>
+        <fastType id="type-3">
+            <title>
+                <ru>Type 3</ru>
+            </title>
+        </fastType>
+    </types>
+
+    <fast order="0">
+        <schedule>
+            <day weekday="wed" fastType="type-1"/>
+            <day weekday="fri" fastType="type-2"/>
+            <day weekday="sat" fastType="type-2"/>
+        </schedule>
+        <schedule order="1">
+            <day weekday="sat" fastType="type-3"/>
+        </schedule>
+    </fast>
+
+    <fast order="1" id="id-1">
+        <title>
+            <ru>Lent type</ru>
+        </title>
+        <start>
+            <easter days="-48"/>
+        </start>
+        <end>
+            <easter/>
+        </end>
+        <schedule>
+            <day weekday="mon" fastType="type-1"/>
+        </schedule>
+        <schedule order="1">
+            <start>
+                <julian>02-02</julian>
+            </start>
+            <end>
+                <julian>03-03</julian>
+            </end>
+            <day number="0" fastType="type-2"/>
+            <day number="10" fastType="type-3"/>
+        </schedule>
+    </fast>
+</fasts>

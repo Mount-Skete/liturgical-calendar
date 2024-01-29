@@ -1,6 +1,7 @@
 from dataclasses import dataclass
-from .TemplateBase import TemplateBase
+
 from .Month import MonthData, Month
+from .TemplateBase import TemplateBase
 
 
 @dataclass
@@ -10,7 +11,6 @@ class YearData:
 
 
 class Year(TemplateBase):
-
     def render(self, data: YearData):
         months = [Month().render(mdata) for mdata in data.monthsData]
         return ''.join(months)

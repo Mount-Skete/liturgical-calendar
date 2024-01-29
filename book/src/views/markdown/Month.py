@@ -1,9 +1,11 @@
-import chevron
-from datetime import datetime
 from dataclasses import dataclass
-from .TemplateBase import TemplateBase
-from .Day import DayData, Day
+from datetime import datetime
+
+import chevron
+
 from .CalendarUtils import CalendarUtils
+from .Day import DayData, Day
+from .TemplateBase import TemplateBase
 
 
 @dataclass

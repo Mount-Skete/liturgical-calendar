@@ -3,7 +3,8 @@ from datetime import datetime
 
 import chevron
 
-from data import Feast, Hymns, Hymn, WeeklyHymn
+from data import Feast, Hymns, WeeklyHymn
+from data.fasts import  FastData
 from .TemplateBase import TemplateBase
 
 
@@ -12,6 +13,7 @@ class DayData:
     gregorian_date: datetime
     julian_date: datetime
     feasts: list[Feast]
+    fast_data: FastData
     echo: int
     daily_hymn: WeeklyHymn
 

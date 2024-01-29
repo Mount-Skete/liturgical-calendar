@@ -1,10 +1,10 @@
 import os
 import xml.etree.ElementTree as ET
-
-from . import Feast, Feasts
-from .FeastsXmlSerializer import FeastsXmlSerializer
-
 from calendar import monthrange
+
+from .Feast import Feast
+from .Feasts import Feasts
+from .FeastsXmlSerializer import FeastsXmlSerializer
 
 
 class FeastsRepository:

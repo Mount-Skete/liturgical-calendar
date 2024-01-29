@@ -1,6 +1,7 @@
 import chevron
-from .TemplateBase import TemplateBase
+
 from data import Feast
+from .TemplateBase import TemplateBase
 
 
 class Page(TemplateBase):
