@@ -87,7 +87,7 @@ class FastsTestCase(unittest.TestCase):
     def test_lent_period_end(self):
         fast = self.repo.fasts.by_id('fast:lent')
 
-        actual = fast.matches_date(datetime(2024, 5, 5))
+        actual = fast.matches_date(datetime(2024, 5, 4))
 
         self.assertTrue(actual)
 
@@ -161,6 +161,13 @@ class FastsTestCase(unittest.TestCase):
 
         self.assertEqual('fast:lent', actual.fast.id)
         self.assertEqual('oil', actual.fast_type.id)
+        self.assertIsNotNone(actual.fast_type.title)
+
+    def test_easter_sun(self):
+        actual = self.repo.fasts.for_date(datetime(2024, 5, 5))
+
+        self.assertEqual('fast:easter', actual.fast.id)
+        self.assertEqual('no-fast', actual.fast_type.id)
         self.assertIsNotNone(actual.fast_type.title)
 
     def test_apostles_before(self):
@@ -271,7 +278,7 @@ class FastsTestCase(unittest.TestCase):
 
     def test_special_week_easter_period(self):
         repo2023 = FastsRepository(2023, self.FASTS_DATA_PATH)
-        actual = repo2023.fasts.by_id('fast:easter')
+        actual = repo2023.fasts.by_id('fast:easter_week')
 
         self.assertEqual(datetime(2023, 4, 17), actual.start)
         self.assertEqual(datetime(2023, 4, 22), actual.end)
@@ -280,8 +287,8 @@ class FastsTestCase(unittest.TestCase):
         repo2023 = FastsRepository(2023, self.FASTS_DATA_PATH)
         actual = repo2023.fasts.by_id('fast:trinity')
 
-        self.assertEqual(datetime(2023, 5, 22), actual.start)
-        self.assertEqual(datetime(2023, 5, 28), actual.end)
+        self.assertEqual(datetime(2023, 6, 5), actual.start)
+        self.assertEqual(datetime(2023, 6, 10), actual.end)
 
 
 if __name__ == '__main__':
