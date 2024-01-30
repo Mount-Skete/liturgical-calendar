@@ -43,6 +43,7 @@ class DateXmlSerializerTestCase(unittest.TestCase):
 
         # TODO: Check start date
         self.assertEqual(gregorian_to_julian(datetime(2024, 6, 30)), actual)
+        self.assertEqual(0, actual.weekday())
 
 
 if __name__ == '__main__':
