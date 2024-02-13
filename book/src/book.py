@@ -3,6 +3,7 @@ from calendar import monthrange
 from datetime import datetime
 
 from data.fasts import FastsRepository
+from data.weekly_readings import WeeklyReadingsRepository
 from data import FeastsRepository, DailyHymns
 from julian_calendar import calculate_echo_gregorian, gregorian_to_julian
 from views.markdown import DayData, MonthData, Year, YearData, Pages, TemplateBase, Calendar
@@ -23,6 +24,7 @@ class Book:
         print(f'Loaded {len(feasts)} feasts')
 
         fasts = FastsRepository(year).fasts
+        weekly_readings = WeeklyReadingsRepository().weekly_readings
 
         cal = Calendar()
         cal.tofile(year, TemplateBase.get_md_calendar_output_path())
@@ -44,11 +46,13 @@ class Book:
                 echo = calculate_echo_gregorian(gregorian_date)
                 daily_hymn = wh.for_date(gregorian_date, echo)
                 fast_data = fasts.for_date(gregorian_date)
+                reading_data = weekly_readings.for_date(gregorian_date)
 
                 days_data.append(DayData(gregorian_date=gregorian_date,
                                          julian_date=gregorian_to_julian(gregorian_date),
                                          feasts=ds,
                                          fast_data=fast_data,
+                                         reading_data=reading_data,
                                          echo=echo,
                                          daily_hymn=daily_hymn))
 

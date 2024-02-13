@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- https://azbyka.ru/days/p-ukazatel-evangelskih-i-apostolskih-chtenij-na-kazhdyj-den-goda -->
+<weeks>
+
+    <!-- Пасха - Easter -->
+    <week>
+        <title>
+            <ru>E1</ru>
+        </title>
+        <date>
+            <easter week="1"/>
+        </date>
+
+        <day weekday="sun">
+            <orthros>
+                <reading>SUN-O1</reading>
+            </orthros>
+            <liturgy>
+                <reading>SUN-L1</reading>
+                <reading>SUN-L2</reading>
+            </liturgy>
+        </day>
+        <day weekday="mon">
+            <reading>MON-1</reading>
+            <reading>MON-2</reading>
+        </day>
+        <day weekday="tue">
+            <reading>TUE-1</reading>
+            <reading>TUE-2</reading>
+        </day>
+        <day weekday="wed">
+            <reading>WED-1</reading>
+            <reading>WED-2</reading>
+        </day>
+        <day weekday="thu">
+            <reading>THU-1</reading>
+            <reading>THU-2</reading>
+        </day>
+        <day weekday="fri">
+            <reading>FRI-1</reading>
+            <reading>FRI-2</reading>
+        </day>
+        <day weekday="sat">
+            <reading>SAT-1</reading>
+            <reading>SAT-2</reading>
+        </day>
+    </week>
+
+
+    <!-- Пятидесятница - Pentecost -->
+    <week>
+        <date>
+            <pentecost week="3"/>
+        </date>
+        <day weekday="sun">
+            <orthros>
+                <reading>SUN-O1</reading>
+            </orthros>
+            <liturgy>
+                <reading>SUN-L1</reading>
+                <reading>SUN-L2</reading>
+            </liturgy>
+        </day>
+        <day weekday="mon">
+            <reading>MON-1</reading>
+            <reading>MON-2</reading>
+        </day>
+        <day weekday="tue">
+            <reading>TUE-1</reading>
+            <reading>TUE-2</reading>
+        </day>
+        <day weekday="wed">
+            <reading>WED-1</reading>
+            <reading>WED-2</reading>
+        </day>
+        <day weekday="thu">
+            <reading>THU-1</reading>
+            <reading>THU-2</reading>
+        </day>
+        <day weekday="fri">
+            <reading>FRI-1</reading>
+            <reading>FRI-2</reading>
+        </day>
+        <day weekday="sat">
+            <reading>SAT-1</reading>
+            <reading>SAT-2</reading>
+        </day>
+    </week>
+
+    <!-- Великий Пост - Lent -->
+    <week>
+        <title>
+            <ru>L1</ru>
+        </title>
+        <date>
+            <lent week="1"/>
+        </date>
+        <day weekday="sun">
+            <orthros>
+                <reading>SUN-O1</reading>
+            </orthros>
+            <liturgy>
+                <reading>SUN-L1</reading>
+                <reading>SUN-L2</reading>
+            </liturgy>
+        </day>
+        <day weekday="mon">
+            <vespers>
+                <reading>V-1</reading>
+            </vespers>
+            <reading>MON-1</reading>
+            <reading>MON-2</reading>
+        </day>
+        <day weekday="tue">
+            <reading>TUE-1</reading>
+            <reading>TUE-2</reading>
+        </day>
+        <day weekday="wed">
+            <reading>WED-1</reading>
+            <reading>WED-2</reading>
+        </day>
+        <day weekday="thu">
+            <reading>THU-1</reading>
+            <reading>THU-2</reading>
+        </day>
+        <day weekday="fri">
+            <reading>FRI-1</reading>
+            <reading>FRI-2</reading>
+        </day>
+        <day weekday="sat">
+            <reading>SAT-1</reading>
+            <reading>SAT-2</reading>
+        </day>
+    </week>
+
+
+</weeks>

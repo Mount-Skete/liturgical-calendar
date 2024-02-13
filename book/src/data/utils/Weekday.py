@@ -18,5 +18,11 @@ class Weekday(Enum):
 
         return Weekday[val.upper()]
 
+    @staticmethod
+    def from_index(val: int):
+        for day in Weekday:
+            if day.value == val:
+                return day
+
     def matches_date(self, date: datetime):
         return self.value == date.weekday()

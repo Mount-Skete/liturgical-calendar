@@ -9,4 +9,5 @@ from .open_calendar import (is_leap_gregorian_year,
                             julian_to_julian_day,
                             julian_day_to_gregorian,
                             julian_day_to_julian)
-from .utils import calculate_echo_gregorian
+
+from .utils import calculate_echo_gregorian, weeks_between, days_between

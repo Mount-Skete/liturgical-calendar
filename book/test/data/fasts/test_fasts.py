@@ -95,7 +95,6 @@ class FastsTestCase(unittest.TestCase):
         repo2023 = FastsRepository(2023, self.FASTS_DATA_PATH)
         actual = repo2023.fasts.for_date(datetime(2023, 4, 8))
 
-        print(datetime(2023, 4, 8) - datetime(2023, 2, 27))
         self.assertEqual('roe', actual.fast_type.id)
         self.assertIsNotNone(actual.fast_type.title)
 
@@ -103,7 +102,6 @@ class FastsTestCase(unittest.TestCase):
         repo2023 = FastsRepository(2023, self.FASTS_DATA_PATH)
         actual = repo2023.fasts.for_date(datetime(2023, 4, 9))
 
-        print(datetime(2023, 4, 9) - datetime(2023, 2, 27))
         self.assertEqual('fish', actual.fast_type.id)
         self.assertIsNotNone(actual.fast_type.title)
 
