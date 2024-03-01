@@ -1,6 +1,6 @@
 chevron~=0.14.0
 
 # Testing
-pytest~=8.0.0
+pytest~=8.0.2
 pytest-cov~=4.1.0
 ruff~=0.2.1
