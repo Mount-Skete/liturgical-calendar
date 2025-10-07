@@ -40,7 +40,7 @@ class WeeklyReadingsXmlSerializerTestCase(unittest.TestCase):
         self.assertEqual('SUN-L1', actual[0].days[0].liturgy[0])
         self.assertEqual('SUN-L2', actual[0].days[0].liturgy[1])
         self.assertIsNone(actual[0].days[0].vespers)
-        self.assertEquals([], actual[0].days[0].readings)
+        self.assertEqual([], actual[0].days[0].readings)
 
         self.assertEqual(3, len(actual[0].days[0].all_readings))
         self.assertEqual('SUN-O1', actual[0].days[0].all_readings[0])
