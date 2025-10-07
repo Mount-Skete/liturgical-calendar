@@ -16,8 +16,9 @@ jobs:
 
     steps:
       - name: Install dependencies
-        run: sudo apt-get install -y language-pack-ru
-      - run: sudo dpkg-reconfigure locales
+        run: |
+          sudo apt-get install -y language-pack-ru
+          sudo dpkg-reconfigure locales
 
       - uses: actions/checkout@v4
         with:
@@ -25,7 +26,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.14'
           cache: 'pip'
 
       - name: Install dependencies
