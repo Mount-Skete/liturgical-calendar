@@ -39,6 +39,7 @@ pandoc "${DIR}"/../output_data/markdown/*.md -f markdown+pipe_tables -t pdf \
     --metadata title="Календарь Православных Праздников ${YEAR}" \
     --metadata author="свт. Димитрий Ростовский" \
     --pdf-engine=xelatex \
+    --pdf-engine-opt=-no-shell-escape \
     -V fontenc=T2A \
     --variable sansfont=Ubuntu \
     --variable mainfont=Ubuntu

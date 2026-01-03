@@ -6,8 +6,8 @@ on:
 
 jobs:
   create_book:
-    name: Book 2025
+    name: Book 2026
     uses: ./.github/workflows/lib-book.yml
     with:
-      year: 2025
+      year: 2026
       run-checks: true
