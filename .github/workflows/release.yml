@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        year: [ 2026 ]
+        year: [ 2027 ]
 
     uses: ./.github/workflows/lib-book.yml
     with:
