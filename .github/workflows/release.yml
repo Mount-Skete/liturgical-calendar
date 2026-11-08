@@ -29,7 +29,7 @@ jobs:
 
     steps:
       - name: Download All
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: liturgical-calendar-*
           merge-multiple: true
